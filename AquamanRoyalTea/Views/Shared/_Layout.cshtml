@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
+
+    <link rel="stylesheet" href="~/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/wwwroot/css/site.css" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand"  href="@Url.Action("Index", "Home")">商品管理</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        @*@if (Session["UserPower"].ToString() == "1")
+                {
+                    <li class="nav-item">@Html.ActionLink("人员管理", "Index", "Account")</li>
+                }*@
+                        <li class="nav-item"><a class="nav-link text-dark" href="@Url.Action("Index", "SupplyInfo")">供应商管理</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="@Url.Action("Index", "ProjectInfo")">项目管理</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="@Url.Action("Index", "CargoInfo")">商品管理</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" href="@Url.Action("Index", "CargoLogInfo")">库存记录</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - mvcDemo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/wwwroot/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/wwwroot/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

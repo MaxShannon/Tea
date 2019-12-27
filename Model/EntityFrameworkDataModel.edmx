@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EntityFrameworkDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EntityFrameworkDataModelStoreContainer">
+    <EntitySet Name="UserInfo" EntityType="EntityFrameworkDataModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderInfoSet" EntityType="EntityFrameworkDataModel.Store.OrderInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CargoInfoSet" EntityType="EntityFrameworkDataModel.Store.CargoInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GoodsInfoSet" EntityType="EntityFrameworkDataModel.Store.GoodsInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserPrivilegesSet" EntityType="EntityFrameworkDataModel.Store.UserPrivilegesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CargoLogInfoSet" EntityType="EntityFrameworkDataModel.Store.CargoLogInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectInfoSet" EntityType="EntityFrameworkDataModel.Store.ProjectInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ApplyInfo" EntityType="EntityFrameworkDataModel.Store.ApplyInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ApplyCargoInfo" EntityType="EntityFrameworkDataModel.Store.ApplyCargoInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SupplyInfoSet" EntityType="EntityFrameworkDataModel.Store.SupplyInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryInfoSet" EntityType="EntityFrameworkDataModel.Store.CategoryInfoSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CargoInfoGoodsInfo" Association="EntityFrameworkDataModel.Store.CargoInfoGoodsInfo">
+      <End Role="CargoInfo" EntitySet="CargoInfoSet" />
+      <End Role="GoodsInfo" EntitySet="GoodsInfoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DelFlag" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UserPrivilegesId" Type="int" Nullable="true" />
+    <Property Name="RealName" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="OrderInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="UserInfoId" Type="int" Nullable="false" />
+    <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CargoInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CargoName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CargoCount" Type="decimal" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="true" />
+    <Property Name="DelFlag" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="Specifications" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Type" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LastCargoName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Area" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CanDel" Type="bit" Nullable="false" DefaultValue="false" />
+  </EntityType>
+  <EntityType Name="GoodsInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderInfoId" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="CargoInfoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPrivilegesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrivilegeName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CargoLogInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsIncome" Type="bit" Nullable="true" />
+    <Property Name="ChangeCount" Type="decimal" Nullable="false" />
+    <Property Name="CargoInfoId" Type="int" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="true" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Desc" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TakenName" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProjectInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="UserId" Type="int" Nullable="true" />
+    <Property Name="DutyName" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ApplyInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserApply" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="UserConfirm" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TimeConfirm" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Batch" Type="int" Nullable="false" />
+    <Property Name="ConfirmFlag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ApplyCargoInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChangeCount" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Batch" Type="int" Nullable="false" />
+    <Property Name="IncomingFlag" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="ShippingFlag" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="UserIncoming" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TimeIncoming" Type="datetime" Nullable="false" />
+    <Property Name="UserShipping" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TimeShipping" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CargoName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SupplyInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Company" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SupplyName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Phone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="CanDel" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="CategoryId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="CategoryInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DelFlag" Type="bit" Nullable="true" />
+    <Property Name="CanDel" Type="bit" Nullable="true" />
+  </EntityType>
+  <Association Name="CargoInfoGoodsInfo">
+    <End Role="CargoInfo" Type="EntityFrameworkDataModel.Store.CargoInfoSet" Multiplicity="1" />
+    <End Role="GoodsInfo" Type="EntityFrameworkDataModel.Store.GoodsInfoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CargoInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsInfo">
+        <PropertyRef Name="CargoInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EntityFrameworkDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="EntityFrameworkDataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserInfo" EntityType="EntityFrameworkDataModel.UserInfo" />
+          <EntitySet Name="OrderInfoSet" EntityType="EntityFrameworkDataModel.OrderInfo" />
+          <EntitySet Name="CargoInfoSet" EntityType="EntityFrameworkDataModel.CargoInfo" />
+          <EntitySet Name="GoodsInfoSet" EntityType="EntityFrameworkDataModel.GoodsInfo" />
+          <EntitySet Name="UserPrivilegesSet" EntityType="EntityFrameworkDataModel.UserPrivileges" />
+          <EntitySet Name="CargoLogInfoSet" EntityType="EntityFrameworkDataModel.CargoLogInfo" />
+          <EntitySet Name="ProjectInfoSet" EntityType="EntityFrameworkDataModel.ProjectInfo" />
+          <EntitySet Name="ApplyInfo" EntityType="EntityFrameworkDataModel.ApplyInfo" />
+          <EntitySet Name="ApplyCargoInfo" EntityType="EntityFrameworkDataModel.ApplyCargoInfo" />
+          <EntitySet Name="SupplyInfoSet" EntityType="EntityFrameworkDataModel.SupplyInfo" />
+          <AssociationSet Name="CargoInfoGoodsInfo" Association="EntityFrameworkDataModel.CargoInfoGoodsInfo">
+            <End Role="CargoInfo" EntitySet="CargoInfoSet" />
+            <End Role="GoodsInfo" EntitySet="GoodsInfoSet" />
+          </AssociationSet>
+          <EntitySet Name="CategoryInfoSet" EntityType="EntityFrameworkDataModel.CategoryInfo" />
+        </EntityContainer>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="DelFlag" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="UserPrivilegesId" Type="Int32" Nullable="true" />
+          <Property Name="RealName" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="OrderInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="UserInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Department" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CargoInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CargoName" Type="String" Nullable="false" />
+          <Property Name="Unit" Type="String" Nullable="true" />
+          <Property Name="CargoCount" Type="Decimal" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="true" />
+          <Property Name="DelFlag" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="Specifications" Type="String" Nullable="true" />
+          <Property Name="Type" Type="String" Nullable="true" />
+          <Property Name="LastCargoName" Type="String" Nullable="false" />
+          <Property Name="Area" Type="String" Nullable="true" />
+          <Property Name="CanDel" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <NavigationProperty Name="GoodsInfo" Relationship="EntityFrameworkDataModel.CargoInfoGoodsInfo" FromRole="CargoInfo" ToRole="GoodsInfo" />
+        </EntityType>
+        <EntityType Name="GoodsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="CargoInfoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CargoInfo" Relationship="EntityFrameworkDataModel.CargoInfoGoodsInfo" FromRole="GoodsInfo" ToRole="CargoInfo" />
+        </EntityType>
+        <EntityType Name="UserPrivileges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrivilegeName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CargoLogInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsIncome" Type="Boolean" Nullable="true" />
+          <Property Name="ChangeCount" Type="Decimal" Nullable="false" />
+          <Property Name="CargoInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Desc" Type="String" Nullable="true" />
+          <Property Name="TakenName" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="ProjectInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" Nullable="false" />
+          <Property Name="ProjectId" Type="String" Nullable="true" />
+          <Property Name="DelFlag" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="UserId" Type="Int32" Nullable="true" />
+          <Property Name="DutyName" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="ApplyInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="String" Nullable="false" />
+          <Property Name="UserApply" Type="String" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+          <Property Name="UserConfirm" Type="String" Nullable="false" />
+          <Property Name="TimeConfirm" Type="String" Nullable="false" />
+          <Property Name="Batch" Type="Int32" Nullable="false" />
+          <Property Name="ConfirmFlag" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ApplyCargoInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChangeCount" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="String" Nullable="false" />
+          <Property Name="Batch" Type="Int32" Nullable="false" />
+          <Property Name="IncomingFlag" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="ShippingFlag" Type="Int32" Nullable="false" DefaultValue="0" />
+          <Property Name="UserIncoming" Type="String" Nullable="false" />
+          <Property Name="TimeIncoming" Type="DateTime" Nullable="false" />
+          <Property Name="UserShipping" Type="String" Nullable="false" />
+          <Property Name="TimeShipping" Type="String" Nullable="false" />
+          <Property Name="CargoName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplyInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="String" Nullable="false" />
+          <Property Name="SupplyName" Type="String" Nullable="true" />
+          <Property Name="Address" Type="String" Nullable="true" />
+          <Property Name="Phone" Type="String" Nullable="true" />
+          <Property Name="DelFlag" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="CanDel" Type="Boolean" Nullable="false" DefaultValue="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <Association Name="CargoInfoGoodsInfo">
+          <End Type="EntityFrameworkDataModel.CargoInfo" Role="CargoInfo" Multiplicity="1" />
+          <End Type="EntityFrameworkDataModel.GoodsInfo" Role="GoodsInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CargoInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsInfo">
+              <PropertyRef Name="CargoInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CategoryInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="true" />
+          <Property Name="DelFlag" Type="Boolean" Nullable="true" />
+          <Property Name="CanDel" Type="Boolean" Nullable="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EntityFrameworkDataModelStoreContainer" CdmEntityContainer="EntityFrameworkDataModelContainer">
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.UserInfo)">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="UserPrivilegesId" ColumnName="UserPrivilegesId" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.OrderInfo)">
+        <MappingFragment StoreEntitySet="OrderInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserInfoId" ColumnName="UserInfoId" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CargoInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.CargoInfo)">
+        <MappingFragment StoreEntitySet="CargoInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CargoName" ColumnName="CargoName" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="CargoCount" ColumnName="CargoCount" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="Specifications" ColumnName="Specifications" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LastCargoName" ColumnName="LastCargoName" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="CanDel" ColumnName="CanDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GoodsInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.GoodsInfo)">
+        <MappingFragment StoreEntitySet="GoodsInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderInfoId" ColumnName="OrderInfoId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="CargoInfoId" ColumnName="CargoInfoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPrivilegesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.UserPrivileges)">
+        <MappingFragment StoreEntitySet="UserPrivilegesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PrivilegeName" ColumnName="PrivilegeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CargoLogInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.CargoLogInfo)">
+        <MappingFragment StoreEntitySet="CargoLogInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IsIncome" ColumnName="IsIncome" />
+          <ScalarProperty Name="ChangeCount" ColumnName="ChangeCount" />
+          <ScalarProperty Name="CargoInfoId" ColumnName="CargoInfoId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Desc" ColumnName="Desc" />
+          <ScalarProperty Name="TakenName" ColumnName="TakenName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.ProjectInfo)">
+        <MappingFragment StoreEntitySet="ProjectInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="DutyName" ColumnName="DutyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplyInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.ApplyInfo)">
+        <MappingFragment StoreEntitySet="ApplyInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UserApply" ColumnName="UserApply" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="UserConfirm" ColumnName="UserConfirm" />
+          <ScalarProperty Name="TimeConfirm" ColumnName="TimeConfirm" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="ConfirmFlag" ColumnName="ConfirmFlag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplyCargoInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.ApplyCargoInfo)">
+        <MappingFragment StoreEntitySet="ApplyCargoInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ChangeCount" ColumnName="ChangeCount" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="IncomingFlag" ColumnName="IncomingFlag" />
+          <ScalarProperty Name="ShippingFlag" ColumnName="ShippingFlag" />
+          <ScalarProperty Name="UserIncoming" ColumnName="UserIncoming" />
+          <ScalarProperty Name="TimeIncoming" ColumnName="TimeIncoming" />
+          <ScalarProperty Name="UserShipping" ColumnName="UserShipping" />
+          <ScalarProperty Name="TimeShipping" ColumnName="TimeShipping" />
+          <ScalarProperty Name="CargoName" ColumnName="CargoName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.SupplyInfo)">
+        <MappingFragment StoreEntitySet="SupplyInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="SupplyName" ColumnName="SupplyName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CanDel" ColumnName="CanDel" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.CategoryInfo)">
+        <MappingFragment StoreEntitySet="CategoryInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CanDel" ColumnName="CanDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

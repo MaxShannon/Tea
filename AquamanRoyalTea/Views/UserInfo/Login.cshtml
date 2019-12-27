@@ -1,0 +1,176 @@
+﻿@model Model.DbQueryModel.UserViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <title>用户登录</title>
+    <link rel="icon" href="~/img/仓库.jpg" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body, .bgimg {
+            width: 100%;
+        }
+
+        .public {
+            position: relative;
+            margin: 0 auto;
+            width: 550px;
+            /*background-color: rgba(74,77,90,0.7);*/
+            z-index: 99;
+            height: 100%;
+            text-align: center;
+            margin-top: 350px;
+            margin-bottom: 350px;
+        }
+
+        .bgimg {
+            float: left;
+            z-index: 100;
+            background: url('../../img/59660a9ac5162_gaitubao_1920x960.jpg') no-repeat center center;
+        }
+
+        /*.logo {
+            width: 120px;
+            margin-top: 100px;
+        }
+        */
+
+        .title {
+            width: 745px;
+            margin-left: -97px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 999;
+        }
+
+        .login {
+            width: 370px;
+            height: 265px;
+            background-color: #fff;
+            margin-left: 90px;
+            box-shadow: 0px 1px 5px 5px #35343b;
+        }
+
+        .text {
+            width: 300px;
+            margin-top: 15px;
+        }
+
+        .inp {
+            border: 1px solid #383c48;
+            width: 300px;
+            height: 35px;
+            margin-top: 35px;
+            margin-left: 30px;
+            line-height: 35px;
+            font-size: 14px;
+            color: #383c48;
+            font-family: "微软雅黑"
+        }
+
+            .inp span {
+                margin-left: 21px;
+            }
+
+            .inp input {
+                height: 31px;
+                width: 230px;
+                border: none;
+                margin-top: -35px;
+                outline: none;
+            }
+
+        .btn {
+            width: 90px;
+            height: 35px;
+            margin-top: 25px;
+            background-color: #383c48;
+            color: #fff;
+            text-align: center;
+            line-height: 35px;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #424755;
+            }
+
+        .footer {
+            height: 40px;
+            line-height: 40px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            /*background: #000080;*/
+            color: #000;
+            font-family: Arial;
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: aliceblue;
+            background: url('../../img/411590786573263044_gaitubao_224x40.png') no-repeat center center;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('#submit').click(function () {
+                $.ajax({
+                    url: '@Url.Action("Login")',
+                    type: "Post",
+                    data: $('#form').serialize(),
+                    success: function(data) {
+                        if (data.Code === 1) {
+                            window.location.href = '@Url.Action("Index", "Home")';
+
+                        }
+                        if (data.success === 'fail') {
+                            alert(data.message);
+                        }
+                    },
+                    error: function(data) {
+                        alert(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="bgimg">
+        <div class="public">
+
+            <form id="form" method="post">
+                <div class="login">
+                    <img class="text" src="~/img/title.png" />
+                    <div class="inp">
+                        <span>用户名</span>
+                        @Html.EditorFor(u => u.UserName)
+                    </div>
+                    <div style="margin-top:15px;" class="inp">
+                        <span style="margin-left:22px;">密码</span>
+                        @Html.EditorFor(u => u.Password)
+                    </div>
+                    <div class="sub">
+                        <input type="button" value="登录" class="btn btn-default" id="submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+</body>
+</html>
