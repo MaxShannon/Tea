@@ -216,6 +216,10 @@
     <Content Include="Views\CategoryInfo\Create.cshtml" />
     <Content Include="Views\CategoryInfo\Edit.cshtml" />
     <Content Include="Views\CategoryInfo\Delete.cshtml" />
+    <Content Include="Views\CargoInfo\Index.cshtml" />
+    <Content Include="Views\CargoInfo\Create.cshtml" />
+    <Content Include="Views\CargoInfo\Edit.cshtml" />
+    <Content Include="Views\CargoInfo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
