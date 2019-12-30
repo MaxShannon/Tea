@@ -13,5 +13,7 @@ namespace Bll
         {
             CurrentDal = DbSession.CargoInfoDal;
         }
+
+
     }
 }
