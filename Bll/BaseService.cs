@@ -10,6 +10,8 @@ namespace Bll
 {
     public abstract class BaseService<T> where T : class, new()
     {
+        public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
+
         public IBaseDal<T> CurrentDal { get; set; }
 
         protected BaseService()
@@ -19,16 +21,15 @@ namespace Bll
 
         public abstract void SetCurrentDal();
 
-
-
-        public ReturnMessageModel Add(T model)
+        public virtual ReturnMessageModel Add(T model)
         {
             var returnMessageModel = new ReturnMessageModel();
-            if (CurrentDal.Add(model))
+            CurrentDal.Add(model);
+            if (CurrentDal.SaveChanges())
             {
                 returnMessageModel.Code = ReturnMessageCode.Success;
                 returnMessageModel.Message = "添加成功";
-                //DbSession.SaveChanges();
+                DbSession.SaveChanges();
             }
             else
             {
@@ -38,13 +39,15 @@ namespace Bll
             return returnMessageModel;
         }
 
-        public ReturnMessageModel Delete(int id)
+        public virtual ReturnMessageModel Delete(int id)
         {
             var returnMessageModel = new ReturnMessageModel();
-            if (CurrentDal.Delete(id))
+            CurrentDal.Delete(id);
+            if (CurrentDal.SaveChanges())
             {
                 returnMessageModel.Code = ReturnMessageCode.Success;
                 returnMessageModel.Message = "删除成功";
+                DbSession.SaveChanges();
             }
             else
             {
@@ -54,13 +57,15 @@ namespace Bll
             return returnMessageModel;
         }
 
-        public ReturnMessageModel Edit(T model)
+        public virtual ReturnMessageModel Edit(T model)
         {
             var returnMessageModel = new ReturnMessageModel();
-            if (CurrentDal.Edit(model))
+            CurrentDal.Edit(model);
+            if (CurrentDal.SaveChanges())
             {
                 returnMessageModel.Code = ReturnMessageCode.Success;
                 returnMessageModel.Message = "修改成功";
+                DbSession.SaveChanges();
             }
             else
             {

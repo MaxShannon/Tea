@@ -1,12 +1,13 @@
 ﻿using Model;
+using Model.DbQueryModel;
 using Model.ReturnMessageModel;
 
 namespace IBll
 {
     public interface ICargoInfoService : IBaseService<CargoInfo>
     {
-        ReturnMessageModel CargoIn(int id, decimal count);
+        //ReturnMessageModel CargoInOut(CargoLogInfo cargoLogInfo);
 
-        ReturnMessageModel CargoOut(int id, decimal count);
+        //ReturnMessageModel CargoOut(int id, decimal count);
     }
 }

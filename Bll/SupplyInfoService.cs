@@ -15,7 +15,7 @@ namespace Bll
     public class SupplyInfoService : BaseService<SupplyInfo>, ISupplyInfoService
     {
 
-        public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession(); 
+        //public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession(); 
 
 
         public override void SetCurrentDal()

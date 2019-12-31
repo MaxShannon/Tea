@@ -8,7 +8,7 @@ namespace Bll
     public class CategoryInfoService : BaseService<CategoryInfo>, ICategoryInfoService
     {
 
-        public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
+        //public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
 
         public override void SetCurrentDal()
         {

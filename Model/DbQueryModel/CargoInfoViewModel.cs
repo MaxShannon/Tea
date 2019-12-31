@@ -13,6 +13,12 @@
         public string LastCargoName { get; set; }
         public string Area { get; set; }
         public bool CanDel { get; set; }
+        public CargoInOutState CargoInOutState { get; set; }
+    }
 
+    public enum CargoInOutState
+    {
+        In = 1,
+        Out = 2
     }
 }

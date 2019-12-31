@@ -7,7 +7,7 @@ namespace Bll
 {
     public class ProjectInfoService : BaseService<ProjectInfo>, IProjectInfoService
     {
-        public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
+        //public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
 
         public override void SetCurrentDal()
         {

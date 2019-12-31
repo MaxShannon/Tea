@@ -11,7 +11,7 @@ namespace Bll
     public class UserInfoService : BaseService<UserInfo>, IUserInfoService
     {
 
-        public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
+        //public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
 
         public override void SetCurrentDal()
         {

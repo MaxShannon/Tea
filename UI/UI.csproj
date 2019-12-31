@@ -220,6 +220,11 @@
     <Content Include="Views\CargoInfo\Create.cshtml" />
     <Content Include="Views\CargoInfo\Edit.cshtml" />
     <Content Include="Views\CargoInfo\Delete.cshtml" />
+    <Content Include="Views\CargoInfo\CargoInOut.cshtml" />
+    <Content Include="Views\CargoLogInfo\Index.cshtml" />
+    <Content Include="Views\CargoLogInfo\Create.cshtml" />
+    <Content Include="Views\CargoLogInfo\Edit.cshtml" />
+    <Content Include="Views\CargoLogInfo\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

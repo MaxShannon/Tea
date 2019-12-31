@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Model.DbQueryModel.CargoLogInfoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsIncome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChangeCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoInfoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TakenName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsIncome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChangeCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoInfoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TakenName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

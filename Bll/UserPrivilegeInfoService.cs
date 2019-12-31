@@ -8,7 +8,7 @@ namespace Bll
     public class UserPrivilegeInfoService : BaseService<UserPrivileges>, IUserPrivilegeInfoService
     {
 
-        public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
+        //public IDbSession DbSession => DbSessionFactory.GetCurrentDbSession();
 
         public override void SetCurrentDal()
         {

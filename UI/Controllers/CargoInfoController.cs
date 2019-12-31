@@ -10,13 +10,16 @@ namespace UI.Controllers
 {
     public class CargoInfoController : BaseController<CargoInfo>
     {
-        private readonly UserInfoService _userInfoService = new UserInfoService();
-
         public IServiceSession ServiceSession => ServiceSessionFactory.GetCurrentServiceSession();
+
+        public ICargoLogInfoService CargoLogInfoService { get; set; }
+        public ICargoInfoService CargoInfoService { get; set; }
 
         public override void SetCurrentService()
         {
             CurrentService = ServiceSession.CargoInfoService;
+            CargoLogInfoService = ServiceSession.CargoLogInfoService;
+            CargoInfoService = (ICargoInfoService)CurrentService;
         }
 
         public ActionResult Index()
@@ -52,5 +55,6 @@ namespace UI.Controllers
             return View(model);
         }
         #endregion
+
     }
 }

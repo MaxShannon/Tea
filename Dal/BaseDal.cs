@@ -18,28 +18,30 @@ namespace Dal
             //var t = _db.Set<T>();
         }
 
-        public bool Add(T model)
+        public void Add(T model)
         {
             _db.Set<T>().Add(model);
-            return _db.SaveChanges() > 0;
         }
 
-        public bool Delete(int id)
+        public void Delete(int id)
         {
             var model = _db.Set<T>().Find(id);
-            if (model == null)
+            if (model != null)
             {
-                return false;
+                _db.Set<T>().Remove(model);
             }
-            _db.Set<T>().Remove(model);
+        }
+
+        public void Edit(T model)
+        {
+            _db.Entry(model).State = EntityState.Modified;
+        }
+
+        public bool SaveChanges()
+        {
             return _db.SaveChanges() > 0;
         }
 
-        public bool Edit(T model)
-        {
-            _db.Entry(model).State = EntityState.Modified;
-            return _db.SaveChanges() > 0;
-        }
 
         public void Update(T entity, IEnumerable<Expression<Func<T, object>>> properties)
         {
@@ -50,9 +52,7 @@ namespace Dal
                 _db.Entry(entity).Property(((MemberExpression)property.Body).Member.Name).IsModified = true;
             }
 
-
-        } // Update
-          //  _repository.Update<File>(file, new { x => x.Data, x => x.Name });
+        }
 
 
         public IQueryable<T> GetEntitiesByKey(Expression<Func<T, bool>> whereLambda)

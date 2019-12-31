@@ -10,17 +10,21 @@ namespace IDal
 {
     public interface IBaseDal<T> where T : class, new()
     {
-        bool Add(T model);
+        void Add(T model);
 
-        bool Delete(int id);
+        void Delete(int id);
 
-        bool Edit(T model);
+        void Edit(T model);
+
+        bool SaveChanges();
 
         IQueryable<T> GetEntitiesByKey(Expression<Func<T, bool>> whereLambda);
 
         IQueryable<T> GetAllEntities();
 
         T GetEntityById(int id);
+
+
 
         //List<T> FindValueByKey(Expression<Func<T, bool>> whereLambda);
     }

@@ -22,7 +22,7 @@ namespace UI.Controllers
         {
             SetCurrentService();
         }
-        
+
         protected override void OnActionExecuting(ActionExecutingContext filterExecutingContext)
         {
             base.OnActionExecuting(filterExecutingContext);
@@ -49,7 +49,7 @@ namespace UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(T model)
+        public virtual ActionResult Create(T model)
         {
             var returnMessageModel = CurrentService.Add(model);
             return Redirect(Url.Action("Index"));
