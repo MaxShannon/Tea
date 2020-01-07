@@ -9,8 +9,7 @@ namespace Dal
         public static DbContext GetCurrentDbContext()
         {
             //return new EntityFrameworkDataModelContainer();
-            DbContext db = CallContext.GetData("DbContext") as DbContext;
-            if (db == null)
+            if (!(CallContext.GetData("DbContext") is DbContext db))
             {
                 db = new EntityFrameworkDataModelContainer();
                 CallContext.SetData("DbContext", db);

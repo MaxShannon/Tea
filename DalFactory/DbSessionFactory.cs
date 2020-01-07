@@ -12,7 +12,7 @@ namespace DalFactory
             if (!(CallContext.GetData("DbSession") is IDbSession db))
             {
                 db = new DbSession();
-                CallContext.SetData("DbContext", db);
+                CallContext.SetData("DbSession", db);
             }
 
             return db;

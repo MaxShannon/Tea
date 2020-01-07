@@ -70,6 +70,10 @@
       <Project>{8a83886d-f6e2-484a-bea5-0ff1da5d0e21}</Project>
       <Name>IDal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{55205470-D87D-45CE-84C4-C7E17F4169DB}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,14 +31,14 @@ namespace Bll
                 cargo.CargoCount -= model.ChangeCount;
             }
             CargoInfoDal.Edit(cargo);
-
-            
+            //CargoInfoDal.SaveChanges();
+            //CurrentDal.SaveChanges();
 
             if (cargo.CargoCount > 0 && DbSession.SaveChanges() > 0)  // 必须分别提交？
             {
-                DbSession.SaveChanges();
-                CargoInfoDal.SaveChanges();
-                CurrentDal.SaveChanges();
+                //DbSession.SaveChanges();
+                //CargoInfoDal.SaveChanges();
+                //
                 returnMessageModel.Code = ReturnMessageCode.Success;
                 returnMessageModel.Message = "添加成功";
 

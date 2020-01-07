@@ -10,8 +10,8 @@ namespace Dal
 {
     public class BaseDal<T> where T : class, new()
     {
-        private readonly EntityFrameworkDataModelContainer _db = new EntityFrameworkDataModelContainer();
-        //private readonly DbContext _db = DbContextFactory.GetCurrentDbContext();
+        //private readonly EntityFrameworkDataModelContainer _db = new EntityFrameworkDataModelContainer();
+        private readonly DbContext _db = DbContextFactory.GetCurrentDbContext();
 
         public void IsUnique(string colName, string val)
         {
@@ -60,8 +60,16 @@ namespace Dal
             return _db.Set<T>().Where(whereLambda).AsQueryable();
         }
 
-        public IQueryable<T> GetAllEntities()
+        public IQueryable<T> GetPageEntities<TO>(int pageSize, int pageIndex, out int total,
+            Expression<Func<T, bool>> whereLambda, Expression<Func<T, TO>> orderByLambda, bool isAsc)
         {
+            total = _db.Set<T>().Where(whereLambda).Count();
+            return isAsc ? _db.Set<T>().Where(whereLambda).OrderBy(orderByLambda).Skip(pageIndex).Take(pageIndex).AsQueryable() : _db.Set<T>().Where(whereLambda).OrderByDescending(orderByLambda).Skip(pageIndex).Take(pageIndex).AsQueryable();
+
+        }
+
+        public IQueryable<T> GetAllEntities()
+        {   
             return _db.Set<T>().AsQueryable();
         }
 
