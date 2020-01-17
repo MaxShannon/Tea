@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Time)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProjectId)
+            @Html.DisplayNameFor(model => model.ProjectInfoId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserId)
@@ -36,7 +36,7 @@
             @Html.DisplayNameFor(model => model.TakenName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CargoName)
+            @Html.DisplayNameFor(model => model.CargoInfoName)
         </th>
         <th></th>
     </tr>
@@ -56,7 +56,7 @@
             @Html.DisplayFor(modelItem => item.Time)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectId)
+            @Html.DisplayFor(modelItem => item.ProjectInfoId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserId)
@@ -68,7 +68,7 @@
             @Html.DisplayFor(modelItem => item.TakenName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CargoName)
+            @Html.DisplayFor(modelItem => item.CargoInfoName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

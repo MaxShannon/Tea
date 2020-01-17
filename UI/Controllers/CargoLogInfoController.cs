@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using DalFactory;
+﻿using DalFactory;
 using IBll;
 using Model;
 using Model.DbQueryModel;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace UI.Controllers
 {
@@ -17,12 +15,14 @@ namespace UI.Controllers
 
         public ICargoLogInfoService CargoLogInfoService { get; set; }
         public ICargoInfoService CargoInfoService { get; set; }
+        public IProjectInfoService ProjectInfoService { get; set; }
 
         public override void SetCurrentService()
         {
             CurrentService = ServiceSession.CargoLogInfoService;
             CargoInfoService = ServiceSession.CargoInfoService;
             CargoLogInfoService = ServiceSession.CargoLogInfoService;
+            ProjectInfoService = ServiceSession.ProjectInfoService;
         }
 
         public ActionResult Index()
@@ -39,9 +39,11 @@ namespace UI.Controllers
             {
                 CargoInfoId = cargoId,
                 IsIncome = cargoInOutState == CargoInOutState.In,
-                CargoName = CargoInfoService.GetEntityById(cargoId).CargoName,
+                CargoInfoName = CargoInfoService.GetEntityById(cargoId).CargoName,
                 Time = DateTime.Now
             };
+            
+            ViewBag.ProjectName = new SelectList(ProjectInfoService.GetAllEntities(), "Id", "ProjectName", 1);
             return View(model);
         }
 

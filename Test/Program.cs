@@ -12,26 +12,25 @@ namespace Test
     {
         private static void Main(string[] args)
         {
-            var userInfo = new UserInfo()
+            var cargoLogInfo = new CargoLogInfo()
             {
                 Id = 10,
-                UserName = "max",
-                Password = "123"
+                CargoInfoId = 1,
+                TakenName = "TakenName",
             };
-            List<UserInfo> userInfos = new List<UserInfo>()
-            {
-                new UserInfo(){ Id = 10,UserName = "max",Password = "123"},
-                new UserInfo(){ Id = 10,UserName = "max",Password = "123"},
-                new UserInfo(){ Id = 10,UserName = "max",Password = "123"},
-                new UserInfo(){ Id = 10,UserName = "max",Password = "123"}
-            };
-            List<UserInfoViewModel> userViewModels = new List<UserInfoViewModel>();
-            foreach (var item in userInfos)
-            {
-                userViewModels.Add(ModelHelper<UserInfo, UserInfoViewModel>.EntityToModel(item));
-            }
+            //List<CargoInfo> userInfos = new List<CargoInfo>()
+            //{
+            //    new CargoInfo(){ Id = 10, = "max",Password = "123"},
+               
+            //};
+            //List<UserInfoViewModel> userViewModels = new List<UserInfoViewModel>();
+            //foreach (var item in userInfos)
+            //{
+            //    userViewModels.Add(ModelHelper<UserInfo, UserInfoViewModel>.EntityToModel(item));
+            //}
 
-            var tt = ModelHelper<UserInfo, UserInfoViewModel>.EntitiesToModels(userInfos);
+            //var tt = ModelHelper<UserInfo, UserInfoViewModel>.EntitiesToModels(userInfos);
+            var t = ModelHelper<CargoLogInfo, CargoLogInfoViewModel>.EntityToModel(cargoLogInfo);
         }
     }
 }

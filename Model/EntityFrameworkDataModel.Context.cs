@@ -36,5 +36,6 @@ namespace Model
         public virtual DbSet<ApplyCargoInfo> ApplyCargoInfo { get; set; }
         public virtual DbSet<SupplyInfo> SupplyInfoSet { get; set; }
         public virtual DbSet<CategoryInfo> CategoryInfoSet { get; set; }
+        public virtual DbSet<SupplyCategoryInfo> SupplyCategoryInfoSet { get; set; }
     }
 }

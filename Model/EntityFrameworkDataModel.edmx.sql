@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 12/27/2019 16:21:02
+-- Date Created: 01/09/2020 11:26:10
 -- Generated from EDMX file: E:\AquamanRoyalTea\AquamanRoyalTeaPlusPlus\AquamanRoyalTea\Model\EntityFrameworkDataModel.edmx
 -- --------------------------------------------------
 
@@ -19,9 +19,6 @@ GO
 
 IF OBJECT_ID(N'[dbo].[FK_CargoInfoGoodsInfo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[GoodsInfoSet] DROP CONSTRAINT [FK_CargoInfoGoodsInfo];
-GO
-IF OBJECT_ID(N'[dbo].[FK_SupplyInfoCategoryInfo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CategoryInfoSet] DROP CONSTRAINT [FK_SupplyInfoCategoryInfo];
 GO
 
 -- --------------------------------------------------
@@ -60,6 +57,9 @@ IF OBJECT_ID(N'[dbo].[SupplyInfoSet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[CategoryInfoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CategoryInfoSet];
+GO
+IF OBJECT_ID(N'[dbo].[SupplyCategoryInfoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[SupplyCategoryInfoSet];
 GO
 
 -- --------------------------------------------------
@@ -126,7 +126,7 @@ CREATE TABLE [dbo].[CargoLogInfoSet] (
     [ChangeCount] decimal(18,0)  NOT NULL,
     [CargoInfoId] int  NOT NULL,
     [Time] datetime  NOT NULL,
-    [ProjectId] int  NULL,
+    [ProjectInfoId] int  NULL,
     [UserId] int  NOT NULL,
     [Desc] nvarchar(max)  NULL,
     [TakenName] nvarchar(max)  NULL
@@ -192,6 +192,15 @@ CREATE TABLE [dbo].[CategoryInfoSet] (
     [CategoryName] nvarchar(max)  NULL,
     [DelFlag] bit  NULL,
     [CanDel] bit  NULL
+);
+GO
+
+-- Creating table 'SupplyCategoryInfoSet'
+CREATE TABLE [dbo].[SupplyCategoryInfoSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [SupplyInfoId] int  NOT NULL,
+    [CategoryInfoId] int  NOT NULL,
+    [Time] datetime  NOT NULL
 );
 GO
 
@@ -262,6 +271,12 @@ GO
 -- Creating primary key on [Id] in table 'CategoryInfoSet'
 ALTER TABLE [dbo].[CategoryInfoSet]
 ADD CONSTRAINT [PK_CategoryInfoSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'SupplyCategoryInfoSet'
+ALTER TABLE [dbo].[SupplyCategoryInfoSet]
+ADD CONSTRAINT [PK_SupplyCategoryInfoSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

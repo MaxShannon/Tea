@@ -22,8 +22,9 @@ namespace IDal
 
         ICargoLogInfoDal CargoLogInfoDal { get; }
 
-
         IOrderInfoDal OrderInfoDal { get; }
+
+        ISupplyCategoryInfoDal SupplyCategoryInfoDal { get; }
 
         int SaveChanges();
 

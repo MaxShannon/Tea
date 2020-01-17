@@ -16,7 +16,8 @@
         <EntityTypeShape EntityType="EntityFrameworkDataModel.ApplyCargoInfo" Width="2.125" PointX="3.625" PointY="12" IsExpanded="true" />
         <EntityTypeShape EntityType="EntityFrameworkDataModel.SupplyInfo" Width="2.125" PointX="7" PointY="7.5" IsExpanded="true" />
         <AssociationConnector Association="EntityFrameworkDataModel.CargoInfoGoodsInfo" />
-        <EntityTypeShape EntityType="EntityFrameworkDataModel.CategoryInfo" Width="2.125" PointX="4.125" PointY="7.75" />
+        <EntityTypeShape EntityType="EntityFrameworkDataModel.CategoryInfo" Width="2.125" PointX="1.375" PointY="7.75" />
+        <EntityTypeShape EntityType="EntityFrameworkDataModel.SupplyCategoryInfo" Width="2.375" PointX="4.25" PointY="7.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,5 +18,7 @@ namespace IBll
         IQueryable<T> GetAllEntities();
 
         T GetEntityById(int id);
+
+        string GetNameById(int id);
     }
 }

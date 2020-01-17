@@ -24,7 +24,7 @@ namespace IDal
 
         T GetEntityById(int id);
 
-
+        string GetNameById(int id);
 
         //List<T> FindValueByKey(Expression<Func<T, bool>> whereLambda);
     }

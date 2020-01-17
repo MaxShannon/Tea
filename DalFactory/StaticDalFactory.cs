@@ -53,5 +53,12 @@ namespace DalFactory
 
             return Assembly.Load(AssemblyName).CreateInstance(AssemblyName + ".OrderInfoDal") as IOrderInfoDal;
         }
+
+        public static ISupplyCategoryInfoDal GetSupplyCategoryInfoDal()
+        {
+            return Assembly.Load(AssemblyName).CreateInstance(AssemblyName + ".SupplyCategoryInfoDal") as ISupplyCategoryInfoDal;
+        }
+
+        
     }
 }

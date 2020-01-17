@@ -90,6 +90,9 @@ namespace Bll
             return CurrentDal.GetEntityById(id);
         }
 
-
+        public string GetNameById(int id)
+        {
+            return CurrentDal.GetNameById(id);
+        }
     }
 }

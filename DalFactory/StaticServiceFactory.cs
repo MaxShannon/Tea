@@ -42,5 +42,12 @@ namespace DalFactory
         {
             return Assembly.Load(AssemblyName).CreateInstance(AssemblyName + ".CargoLogInfoService") as ICargoLogInfoService;
         }
+
+        public static ISupplyCategoryInfoService GetSupplyCategoryInfoService()
+        {
+            return Assembly.Load(AssemblyName).CreateInstance(AssemblyName + ".SupplyCategoryInfoService") as ISupplyCategoryInfoService;
+        }
+
+        
     }
 }

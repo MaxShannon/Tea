@@ -47,6 +47,7 @@
     <Compile Include="ICategoryInfoService.cs" />
     <Compile Include="IProjectInfoService.cs" />
     <Compile Include="IServiceSession.cs" />
+    <Compile Include="ISupplyCategoryInfoService.cs" />
     <Compile Include="ISupplyInfoService.cs" />
     <Compile Include="IUserInfoService.cs" />
     <Compile Include="IUserPrivilegeInfoService.cs" />

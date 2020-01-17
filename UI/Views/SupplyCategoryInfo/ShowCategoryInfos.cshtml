@@ -1,11 +1,12 @@
-﻿@using Model.DbQueryModel
+﻿@using Model
+@using Model.DbQueryModel
 @model IEnumerable<Model.DbQueryModel.CategoryInfoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowCategoryInfos";
 }
 
-<h2>Index</h2>
+<h2>ShowCategoryInfos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -37,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.CanDel)
             </td>
             <td>
-                <a href="@Url.Action("Index", "SupplyCategoryInfo", new { id = item.Id, state = SupplyOrCategory.Category })">添加供应商</a> |
+                <a href="@Url.Action("Create", "SupplyCategoryInfo", new SupplyCategoryInfo { CategoryInfoId = item.Id, SupplyInfoId = ViewBag.SupplyInfoId, Time = DateTime.Now })">添加品种</a> |
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })

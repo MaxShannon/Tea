@@ -24,7 +24,8 @@ namespace DalFactory
 
         public IOrderInfoDal OrderInfoDal => StaticDalFactory.GetOrderInfoDal();
 
-     
+        public ISupplyCategoryInfoDal SupplyCategoryInfoDal => StaticDalFactory.GetSupplyCategoryInfoDal();
+        
 
         public int SaveChanges()
         {

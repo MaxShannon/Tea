@@ -16,6 +16,6 @@
 
         ICargoLogInfoService CargoLogInfoService { get; }
 
-
+        ISupplyCategoryInfoService SupplyCategoryInfoService { get; }
     }
 }

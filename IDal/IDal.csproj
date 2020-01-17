@@ -49,6 +49,7 @@
     <Compile Include="IDbSession.cs" />
     <Compile Include="IOrderInfoDal.cs" />
     <Compile Include="IProjectInfoDal.cs" />
+    <Compile Include="ISupplyCategoryInfoDal.cs" />
     <Compile Include="ISupplyInfoDal.cs" />
     <Compile Include="IUserInfoDal.cs" />
     <Compile Include="IUserPrivilegeInfoDal.cs" />

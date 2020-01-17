@@ -12,16 +12,11 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CargoLogInfo
+    public partial class SupplyCategoryInfo
     {
         public int Id { get; set; }
-        public Nullable<bool> IsIncome { get; set; }
-        public decimal ChangeCount { get; set; }
-        public int CargoInfoId { get; set; }
+        public int SupplyInfoId { get; set; }
+        public int CategoryInfoId { get; set; }
         public System.DateTime Time { get; set; }
-        public Nullable<int> ProjectInfoId { get; set; }
-        public int UserId { get; set; }
-        public string Desc { get; set; }
-        public string TakenName { get; set; }
     }
 }

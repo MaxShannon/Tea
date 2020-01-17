@@ -133,6 +133,7 @@
     <Compile Include="Controllers\CategoryInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectInfoController.cs" />
+    <Compile Include="Controllers\SupplyCategoryInfoController.cs" />
     <Compile Include="Controllers\SupplyInfoController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Controllers\UserPrivilegeInfoController.cs" />
@@ -225,11 +226,16 @@
     <Content Include="Views\CargoLogInfo\Create.cshtml" />
     <Content Include="Views\CargoLogInfo\Edit.cshtml" />
     <Content Include="Views\CargoLogInfo\Delete.cshtml" />
+    <Content Include="Views\SupplyInfo\AddCategory.cshtml" />
+    <Content Include="Views\SupplyCategoryInfo\ShowCategoryInfos.cshtml" />
+    <Content Include="Views\SupplyCategoryInfo\ShowSupplyInfos.cshtml" />
+    <Content Include="Views\SupplyCategoryInfo\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Excel\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\SupplyCategory\" />
     <Folder Include="Views\UserPrilegeInfo\" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace UI.Controllers
     public class SupplyInfoController : BaseController<SupplyInfo>
     {
 
-        public IServiceSession  ServiceSession => ServiceSessionFactory.GetCurrentServiceSession();
+        public IServiceSession ServiceSession => ServiceSessionFactory.GetCurrentServiceSession();
 
         public override void SetCurrentService()
         {
@@ -56,5 +56,21 @@ namespace UI.Controllers
             return View(model);
         }
         #endregion
+
+        #region 添加品种
+        public ActionResult AddCategory(int id)
+        {
+            var entity = CurrentService.GetEntityById(id);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory()
+        {
+            //var entity = CurrentService.GetEntityById(id);
+            return View();
+        }
+        #endregion
+
     }
 }

@@ -1,12 +1,12 @@
 ﻿@using Model
-@using Model.DbQueryModel
+@using WebGrease
 @model IEnumerable<Model.DbQueryModel.SupplyInfoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ShowSupplyInfos";
 }
 
-<h2>Index</h2>
+<h2>ShowSupplyInfos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -31,6 +31,9 @@
         <th>
             @Html.DisplayNameFor(model => model.CanDel)
         </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.)
+            </th>*@
         <th></th>
     </tr>
 
@@ -55,8 +58,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CanDel)
             </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CategoryInfoId)
+                </td>*@
             <td>
-                <a href="@Url.Action("Index", "SupplyCategoryInfo", new { id = item.Id, state = SupplyOrCategory.Supply } )">添加品种</a> |
+                @*@using (Html.BeginForm("", "", FormMethod.Post))
+                {
+                    //new RouteValueDictionary() { { "CategoryInfoId", ViewBag.CategoryInfoId }, { "SupplyInfoId", item.Id }, { } Time = DateTime.Now } },new SupplyCategoryInfo { },)
+                    @Html.HiddenFor(m => m.sup)
+                }*@
+
+                @Html.ActionLink("添加", "Create", new { CategoryInfoId = ViewBag.CategoryInfoId, SupplyInfoId = item.Id }) |
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id })

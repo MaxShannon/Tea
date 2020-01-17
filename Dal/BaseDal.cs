@@ -69,13 +69,19 @@ namespace Dal
         }
 
         public IQueryable<T> GetAllEntities()
-        {   
+        {
             return _db.Set<T>().AsQueryable();
         }
 
         public T GetEntityById(int id)
         {
             return _db.Set<T>().Find(id);
+        }
+
+        public string GetNameById(int id)
+        {
+            //typeof(T).GetProperty().get
+            return _db.Set<T>().Find(id)?.ToString();
         }
 
     }

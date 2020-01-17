@@ -2,6 +2,8 @@
 {
     public class CargoLogInfoViewModel : CargoLogInfo
     {
-        public string CargoName { get; set; }
+        public string CargoInfoName { get; set; }
+
+        public string ProjectInfoName { get; set; }
     }
 }

@@ -17,6 +17,7 @@
     <EntitySet Name="ApplyCargoInfo" EntityType="EntityFrameworkDataModel.Store.ApplyCargoInfo" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SupplyInfoSet" EntityType="EntityFrameworkDataModel.Store.SupplyInfoSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CategoryInfoSet" EntityType="EntityFrameworkDataModel.Store.CategoryInfoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SupplyCategoryInfoSet" EntityType="EntityFrameworkDataModel.Store.SupplyCategoryInfoSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CargoInfoGoodsInfo" Association="EntityFrameworkDataModel.Store.CargoInfoGoodsInfo">
       <End Role="CargoInfo" EntitySet="CargoInfoSet" />
       <End Role="GoodsInfo" EntitySet="GoodsInfoSet" />
@@ -84,7 +85,7 @@
     <Property Name="ChangeCount" Type="decimal" Nullable="false" />
     <Property Name="CargoInfoId" Type="int" Nullable="false" />
     <Property Name="Time" Type="datetime" Nullable="false" />
-    <Property Name="ProjectId" Type="int" Nullable="true" />
+    <Property Name="ProjectInfoId" Type="int" Nullable="true" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="Desc" Type="nvarchar(max)" Nullable="true" />
     <Property Name="TakenName" Type="nvarchar(max)" Nullable="true" />
@@ -151,6 +152,15 @@
     <Property Name="DelFlag" Type="bit" Nullable="true" />
     <Property Name="CanDel" Type="bit" Nullable="true" />
   </EntityType>
+  <EntityType Name="SupplyCategoryInfoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupplyInfoId" Type="int" Nullable="false" />
+    <Property Name="CategoryInfoId" Type="int" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+  </EntityType>
   <Association Name="CargoInfoGoodsInfo">
     <End Role="CargoInfo" Type="EntityFrameworkDataModel.Store.CargoInfoSet" Multiplicity="1" />
     <End Role="GoodsInfo" Type="EntityFrameworkDataModel.Store.GoodsInfoSet" Multiplicity="*" />
@@ -183,6 +193,7 @@
             <End Role="GoodsInfo" EntitySet="GoodsInfoSet" />
           </AssociationSet>
           <EntitySet Name="CategoryInfoSet" EntityType="EntityFrameworkDataModel.CategoryInfo" />
+          <EntitySet Name="SupplyCategoryInfoSet" EntityType="EntityFrameworkDataModel.SupplyCategoryInfo" />
         </EntityContainer>
         <EntityType Name="UserInfo">
           <Key>
@@ -248,7 +259,7 @@
           <Property Name="ChangeCount" Type="Decimal" Nullable="false" />
           <Property Name="CargoInfoId" Type="Int32" Nullable="false" />
           <Property Name="Time" Type="DateTime" Nullable="false" />
-          <Property Name="ProjectId" Type="Int32" Nullable="true" />
+          <Property Name="ProjectInfoId" Type="Int32" Nullable="true" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Desc" Type="String" Nullable="true" />
           <Property Name="TakenName" Type="String" Nullable="true" />
@@ -327,6 +338,15 @@
           <Property Name="DelFlag" Type="Boolean" Nullable="true" />
           <Property Name="CanDel" Type="Boolean" Nullable="true" />
         </EntityType>
+        <EntityType Name="SupplyCategoryInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplyInfoId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryInfoId" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,7 +419,7 @@
           <ScalarProperty Name="ChangeCount" ColumnName="ChangeCount" />
           <ScalarProperty Name="CargoInfoId" ColumnName="CargoInfoId" />
           <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ProjectInfoId" ColumnName="ProjectInfoId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Desc" ColumnName="Desc" />
           <ScalarProperty Name="TakenName" ColumnName="TakenName" />
@@ -470,6 +490,16 @@
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
           <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
           <ScalarProperty Name="CanDel" ColumnName="CanDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SupplyCategoryInfoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityFrameworkDataModel.SupplyCategoryInfo)">
+        <MappingFragment StoreEntitySet="SupplyCategoryInfoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SupplyInfoId" ColumnName="SupplyInfoId" />
+          <ScalarProperty Name="CategoryInfoId" ColumnName="CategoryInfoId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

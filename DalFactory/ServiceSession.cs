@@ -18,6 +18,10 @@ namespace DalFactory
 
         public ICargoLogInfoService CargoLogInfoService => StaticServiceFactory.GetCargoLogInfoService();
 
+        public ISupplyCategoryInfoService SupplyCategoryInfoService => StaticServiceFactory.GetSupplyCategoryInfoService();
+
+        
+
 
     }
 }

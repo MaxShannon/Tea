@@ -11,5 +11,7 @@ namespace Model.DbQueryModel
         public string Phone { get; set; }
         public bool DelFlag { get; set; }
         public bool CanDel { get; set; }
+
+        //public int CategoryInfoId { get; set; }
     }
 }

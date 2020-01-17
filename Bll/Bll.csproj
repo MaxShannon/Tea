@@ -46,6 +46,7 @@
     <Compile Include="CargoLogInfoService.cs" />
     <Compile Include="CategoryInfoService.cs" />
     <Compile Include="ProjectInfoService.cs" />
+    <Compile Include="SupplyCategoryInfoService.cs" />
     <Compile Include="SupplyInfoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfoService.cs" />
